@@ -9,7 +9,9 @@ let express = require('express'),
     session = require('express-session'),
     SlackStrategy = require('passport-slack').Strategy;
 
-require('dotenv').config();
+if (app.get('env') === 'development') {
+	require('dotenv').config();
+}
 require('./config/passport')(passport);
 
 app.set('view engine', 'jade');
