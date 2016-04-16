@@ -7,8 +7,7 @@ let express = require('express'),
 		passport = require('passport'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
-    SlackStrategy = require('passport-slack').Strategy,
-    clientData = require('./secret');
+    SlackStrategy = require('passport-slack').Strategy;
 
 require('dotenv').config();
 require('./config/passport')(passport);

@@ -17,7 +17,7 @@ module.exports = (passport) => {
 	passport.use(new SlackStrategy({
 	    clientID:	process.env.clientID || process.env.clientID_DEV,
 	    clientSecret: process.env.clientSecret || process.env.clientSecret_DEV,
-	    callbackURL: 'http://localhost:3000/auth/slack/callback',
+	    callbackURL: process.env.CALLBACK || process.env.CALLBACK_DEV,
 			scope: 'users:read files:read files:write:user'
 	  },
 	  (accessToken, refreshToken, profile, done) => {
