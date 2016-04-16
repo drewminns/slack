@@ -2,7 +2,9 @@
 
 let SlackStrategy = require('passport-slack').Strategy;
 
-require('dotenv').config();
+if (app.get('env') === 'development') {
+	require('dotenv').config();
+}
 
 module.exports = (passport) => {
 	passport.serializeUser(function(user, done) {
