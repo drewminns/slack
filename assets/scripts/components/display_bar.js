@@ -19,6 +19,7 @@ class DisplayBar extends Component{
 				<div className="userProfile">
 					<p>Oh hey {userName}!</p>
 					<img src={photo} className="profileImage" />
+					<a href="/logout" className="logout">Logout</a>
 				</div>
 			</header>
 		)

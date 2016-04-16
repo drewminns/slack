@@ -23,7 +23,11 @@ app.use(express.static(__dirname + '/public'));
 
 app.listen(port, () => console.log(`listening on Port ${port}`));
 
-app.use(session({secret: process.env.SECRET || process.env.SECRET_DEV }));
+app.use(session({
+	secret: process.env.SECRET || process.env.SECRET_DEV,
+	resave: false,
+	saveUninitialized: false
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 

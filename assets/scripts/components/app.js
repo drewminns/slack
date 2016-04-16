@@ -11,7 +11,6 @@ class App extends Component {
 	componentWillMount() {
 			
 		this.props.fetchAuth().then(() => {
-			console.log(this.props.authData);
 			let token = this.props.authData.token;
 			let id = this.props.authData.profile.id;
 			this.props.fetchProfile(token, id);

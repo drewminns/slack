@@ -17,7 +17,9 @@ module.exports = (app, passport) => {
 	  res.redirect('/hooray')
 	});
 
-	app.get('/hooray', ensureAuthenticated, (req, res) => res.render('app'));
+	app.get('/hooray', ensureAuthenticated, (req, res) => {
+		res.render('app', {profileName: req.user.profile.displayName})
+	});
 
 	app.get('/auth', ensureAuthenticated, (req, res) => {
 	  res.json(req.user);

@@ -129,9 +129,21 @@ header.app-header {
 .userProfile {
 	display: flex;
 	align-items: center;
+	p {
+		font-size: 1.8rem;
+	}
 	img.profileImage {
 		display: block;
 		margin-left: 15px;
+	}
+	.logout {
+		display: inline-block;
+		margin-left: 15px;
+		font-size: 1.4rem;
+		text-decoration: none;
+		padding: 10px 30px;
+		color: white;
+		background: #111;
 	}
 }
 
