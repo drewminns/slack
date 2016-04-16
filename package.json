@@ -20,8 +20,7 @@
     "mocha": "^2.4.5",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
-    "passport-slack": "0.0.4",
-    "react": "^15.0.1"
+    "passport-slack": "0.0.4"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
@@ -30,11 +29,11 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
     "babelify": "^7.2.0",
-    "body-parser": "^1.15.0",
     "browser-sync": "^2.11.2",
     "browserify": "^13.0.0",
     "css-mqpacker": "^4.0.1",
     "cssnano": "^3.5.2",
+    "dotenv": "^2.0.0",
     "gulp": "^3.9.1",
     "gulp-load-plugins": "^1.2.0",
     "gulp-notify": "^2.2.0",
@@ -56,7 +55,6 @@
     "react-masonry-component": "^4.0.0",
     "react-redux": "^4.4.4",
     "redux": "^3.4.0",
-    "redux-form": "^5.0.1",
     "redux-promise": "^0.5.3",
     "stylelint": "^5.4.0",
     "vinyl-buffer": "^1.0.0",
