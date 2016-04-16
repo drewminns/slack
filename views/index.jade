@@ -1,0 +1,60 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='UTF-8')
+		title slack deletron
+		link(rel='icon', href='images/favicon.png', type='image/png')
+		link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,700', rel='stylesheet', type='text/css')
+		link(rel='stylesheet', href='styles/main.css')
+	body
+		header.home-intro
+			.wrapper
+				h1 slack deletron
+				p.lead delete unnecessary files
+				button.login
+					a(href="auth/slack") login with slack
+		section.content
+			.wrapper
+				.leftcontent
+					h2 Slack rules and is great for teams. 
+					p
+						a(href="http://i.giphy.com/m4dxDLChOTGFy.gif") Funny animal gifs
+						|  are really great, however they can quickly bog down the storage on your Slack account.
+					p
+						| Slack Deletron allows you to search and delete the files that you have put on your Slack team account.
+					p
+						| If you are an admin on your team, you can delete not only your files, but all public files on your team!
+				.rightcontent
+					img(src="images/screen.jpg")
+		section.faq
+			.wrapper
+				h2 Hi, you probably have questions
+				.questionContainer
+					p.question
+						| Did Slack build this?
+					p.answer
+						| Nope, 
+						a(href="http://drewminns.com") I did.
+						|  and I hope they love it cause they build great products!
+				.questionContainer
+					p.question
+						| It says that I don't have permission to add this to my Slack?
+					p.answer
+						| Admins can choose whether team members can add third-party integrations to a Slack Team. If they've turned off permissions, you'll have to ask them to turn them back on for you!
+				.questionContainer
+					p.question
+						| Something isn't working! I wanna help make it better
+					p.answer
+						| Help me out! You can submit issues 
+						a(href="https://github.com/drewminns/slack/issues") here 
+						|  to help me work out the kinks. If you want to help make the product better, roll up your sleeves, 
+						a(href="hhttps://github.com/drewminns/slack") fork the code 
+						|  and go to town! 
+
+		footer.home
+			.wrapper
+				p
+					a(href='http://twitter.com/drewisthe') drew minns
+					|  built this
+		
+				

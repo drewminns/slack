@@ -1,0 +1,42 @@
+$base-px: 1.5rem !default;
+
+html { font-size: 62.5%; }
+
+// 1.333 Perfect Fourth
+body {
+	font-size: $base-px;
+	line-height: 1.428;
+	@include print-styles($body);
+}
+
+h1 { font-size: 3.157em; }
+h2 { font-size: 1.9em; }
+h3 { font-size: 1.3em; }
+h4 { font-size: 1.333em; }
+
+h1, h2, h3, h4, h5, h6 { font-family: inherit; }
+
+h1, h2, h3, h4, h5, h6 {
+	color: inherit;
+	line-height: 1.2;
+	letter-spacing: -.04em;
+	@include print-styles($headings)
+}
+
+h1, h2, h3 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+p {
+	font-size: 1em;
+	line-height: 1.428;
+}
+
+ol, ul, dl {
+	margin-top: 0;
+	margin-bottom: 10px;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}

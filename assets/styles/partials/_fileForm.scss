@@ -1,0 +1,80 @@
+aside.fileControl {
+	position: fixed;
+	width: 350px;
+	height: 100%;
+	background: #651FFF;
+	top: 100px;
+	padding: 20px 25px 150px 25px;
+	color: white;
+	overflow: auto;
+}
+
+p.formTitle {
+	font-size: 2.5rem;
+	font-weight: 700;
+}
+
+p.fileSize {
+	font-size: 1.7rem;
+	font-weight: 700;
+}
+
+.fileTypeList {
+	margin-bottom: 20px;
+}
+
+header.displayInfo {
+	margin-bottom: 20px;
+	padding: 0 20px 20px;
+	border-bottom: 3px solid #111;
+}
+
+.check-row {
+	margin: 10px 0;
+	label {
+		display: inline-block;
+		font-size: 1.3rem;
+		margin-right: 10px;
+		font-weight: 300;
+		background: rgba(0,0,0,.7);
+		padding: 5px 7px 2px;
+	}
+	input[type=checkbox] {
+		appearance: none;
+		position: relative;
+		&::before {
+			content: "";
+			border: 3px solid #111;
+			background: #fafafa;
+			position: absolute;
+			top: -17px;
+			left: 0;
+			width: 25px;
+			height: 25px;
+		}
+		&:checked::after {
+			content: "×";
+			font-size: 3rem;
+			position: absolute;
+			color: #111;
+			top: -26px;
+			left: 2px;
+		}
+		&:focus {
+			outline: 0;
+		}
+	}
+}
+
+.field {
+	width: 100%;
+	margin: 20px 0;
+	label {
+		font-size: 1.2rem;
+		margin-bottom: 5px;
+		display: inline-block;
+		padding: 5px 7px 2px;
+		font-weight: 300;
+		background: rgba(0,0,0,.7);
+	}
+}

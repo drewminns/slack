@@ -1,0 +1,15 @@
+{
+  "rules": {
+    "string-quotes" : "double",
+    "number-leading-zero" : "never",
+    "value-list-comma-space-before" : "never",
+    "declaration-colon-space-after" : "always",
+    "block-no-empty" : true,
+    "block-opening-brace-space-before" : "always",
+    "selector-combinator-space-after" : "always",
+    "selector-combinator-space-before" : "always",
+    "selector-pseudo-element-colon-notation" : "double",
+    "declaration-block-no-duplicate-properties" : true,
+    "declaration-block-trailing-semicolon" : "always"
+  }
+}

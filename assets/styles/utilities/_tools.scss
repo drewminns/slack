@@ -1,0 +1,44 @@
+@mixin print-styles($map) {
+	@each $property, $value in $map {
+		#{$property}: $value;
+	}
+}
+
+@mixin bp($point) {
+  @if $point == xl { // 1050px
+    @media (max-width: 65.625rem) { @content; }
+  }
+  @else if $point == lg { // 900px
+    @media (max-width: 56.25rem) { @content; }
+  }
+  @else if $point == md { // 768px
+    @media (max-width: 48rem) { @content; }
+  }
+  @else if $point == sm { // 600px
+    @media (max-width: 37.5rem) { @content; }
+  }
+  @else if $point == xs { // 400px
+    @media (max-width: 25rem) { @content; }
+  }
+}
+
+@mixin cf {
+	*zoom: 1;
+	&::before,
+	&::after {
+		display: table;
+		content: "";
+		line-height: 0;
+	}
+	&::after {
+		clear: both;
+	}
+}
+
+// Hide text
+// ---------
+@mixin hide-text {
+	font: 0/0 a;
+	color: transparent;
+	text-shadow: none;
+}
