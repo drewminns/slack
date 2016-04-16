@@ -1,6 +1,8 @@
 'use strict';
 
-let SlackStrategy = require('passport-slack').Strategy;
+let express = require('express'),
+		app = express(),
+		SlackStrategy = require('passport-slack').Strategy;
 
 if (app.get('env') === 'development') {
 	require('dotenv').config();
