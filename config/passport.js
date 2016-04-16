@@ -1,7 +1,6 @@
 'use strict';
 
 let SlackStrategy = require('passport-slack').Strategy;
-let User = require('./models/user');
 
 require('dotenv').config();
 
