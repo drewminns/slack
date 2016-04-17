@@ -160,6 +160,7 @@ class FileSearch extends Component {
 				<footer className="footerdetails">
 					<p><a href="http://drewminns.com">drew minns</a> built this</p>
 					<p>Help improve it <a href="https://github.com/drewminns/slack">here</a></p>
+					<p><a href="https://twitter.com/share" className="twitter-share-button" data-url="http://www.slackdeletron.com" data-text="Delete unwanted files from your Slack Team" data-via="drewisthe">Tweet</a></p>
 				</footer>
 			</aside>
 		)

@@ -3,6 +3,20 @@ html(lang='en')
 	head
 		meta(charset='UTF-8')
 		title slack deletron
+		meta(name="keywords" content="Slack, Deletron, Slack Deletron, Delete Slack Files")
+		meta(name="description" content="A tool to help delete those cat gifs and other weird files from your Slack team")
+		meta(name="author" content="Drew Minns")
+		meta(property="og:title" content="Slack Deletron")
+		meta(property="og:type" content="website")
+		meta(property="og:url" content="http://www.slackdeletron.com")
+		meta(property="og:image" content="http://www.slackdeletron.com/images/fileshare.jpg")
+		meta(property="og:site_name" content="Slack Deletron")
+		meta(property="og:description" content="A tool to help delete those cat gifs and other weird files from your Slack team")
+		meta(name="twitter:card" content="summary" )
+		meta(name="twitter:site" content="@drewisthe" )
+		meta(name="twitter:title" content="Slack Deletron" )
+		meta(name="twitter:description" content="A tool to help delete those cat gifs and other weird files from your Slack team" )
+		meta(name="twitter:image" content="http://www.slackdeletron.com/images/fileshare.jpg" )
 		link(rel='icon', href='images/favicon.png', type='image/png')
 		link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,700', rel='stylesheet', type='text/css')
 		link(rel='stylesheet', href='styles/main.css')
@@ -56,5 +70,10 @@ html(lang='en')
 				p
 					a(href='http://twitter.com/drewisthe') drew minns
 					|  built this
+				p
+					a.twitter-share-button(href='https://twitter.com/share', data-url='http://www.slackdeletron.com', data-text='Delete unwanted files from your Slack Team', data-via='drewisthe') Tweet
+					script.
+						!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
 		
 				
