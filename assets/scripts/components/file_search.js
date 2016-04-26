@@ -20,7 +20,12 @@ class FileSearch extends Component {
 
 	getFiles() {
 		let token = this.props.authData.token;
-		let fileString;
+		let fileString, userID;
+		if (this.props.profile.user.is_admin === false) {
+			userID = this.props.authData.profile.id
+		} else {
+			userID = this.state.searchType;
+		}
 		if (this.state.all !== true) {
 			let fileTypes = [];
 			if(this.state.images)
@@ -37,12 +42,13 @@ class FileSearch extends Component {
 		} else {
 			fileString = 'all'
 		}
-		this.props.fetchFiles(token, this.state.searchType, fileString);
+		this.props.fetchFiles(token, fileString, userID);
 	}
 
 	handleWhoChange(e) { 
 		this.setState({searchType: e.target.value})
 	}
+
 
 	handleClick(e) {
 		let type = e.target.value
@@ -83,7 +89,6 @@ class FileSearch extends Component {
 		if (typeof this.props.files.fileList !== 'undefined' && this.props.files.fileList.length > 0) {
 			fileDisplay = <p className="fileNum">You've got {this.props.files.fileList.length} files</p>
 		} else if (typeof this.props.files.fileList !== 'undefined' && this.props.files.fileList.length === 0) {
-			console.log(this.props.files.fileList);
 			fileDisplay = <p>No files! Search again for some more!</p>
 		}
 		return (

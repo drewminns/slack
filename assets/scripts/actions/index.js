@@ -18,7 +18,7 @@ export function fetchProfile(token, user) {
 	}
 }
 
-export function fetchFiles(token, userID, types) {
+export function fetchFiles(token, types, userID) {
 	let data = {
 		token: token,
 		types: types
