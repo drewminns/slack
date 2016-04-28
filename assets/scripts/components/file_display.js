@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../actions';
 import Masonry from 'react-masonry-component';
 import File from './file';
 
@@ -13,9 +14,20 @@ class FileDisplay extends Component {
 		super(props)
 	}
 
+	destroyAll() {
+		this.props.fileGroup.fileList.map(val => {
+			this.props.destroyFile(this.props.authData.token, val.id)
+		});
+		// this.props.destroyFile(this.props.authData.token, this.props.details.id);
+	}
+
 	displayFiles() {
 		return (
 			<div>
+			<div className="removeAll">
+				<h3>Remove all files?</h3>
+				<button onClick={this.destroyAll.bind(this)} className="deleteFile">Delete all files below</button>
+			</div>
 			<Masonry
 	      className={'my-gallery-class'} // default ''
 	      options={masonryOptions} // default {}
@@ -80,4 +92,4 @@ function mapStateToProps(state) {
 	}
 }
 
-export default connect(mapStateToProps)(FileDisplay);
+export default connect(mapStateToProps, actions)(FileDisplay);

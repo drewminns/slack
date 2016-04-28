@@ -36,8 +36,7 @@ export function destroyFile(token, file) {
 	const request = axios.get(`https://slack.com/api/files.delete?token=${token}&file=${file}`);
 	return {
 		type: DESTROY_FILE,
-		payload: request,
-		file: file
+		payload: request
 	}
 }
 

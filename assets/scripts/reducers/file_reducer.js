@@ -6,14 +6,13 @@ export default function(state = [], action) {
 			return { ...state, fileList: action.payload.data.files }
 		case DESTROY_FILE:
 			if (action.payload.data.ok) {
-				console.log('ok')
 				let files = {...state}
-				let fileArray = files.fileList.filter(val => val.id !== action.file );
+				let fileID = action.payload.config.url.split("&file=").pop();
+				let fileArray = files.fileList.filter(val => val.id !== fileID );
 				return { ...state, fileList: fileArray }
 			} else {
 				return {...state}
 			}
-
 		default:
 			return state;
 	}
