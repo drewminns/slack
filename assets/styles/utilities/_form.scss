@@ -37,16 +37,14 @@ label {
 	vertical-align: middle;
 }
 
-button.login {
+button.login, .login {
+	display: inline-block;
 	font-size: 2rem;
 	background: #111;
 	border: 0;
-	a { 
-		display: inline-block;
-		text-decoration: none;
-		padding: 10px 30px;
-		color: white;
-	}
+	padding: 10px 30px;
+	color: white;
+	text-decoration: none;
 }
 
 button.deleteAll {
