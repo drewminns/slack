@@ -31,4 +31,9 @@ To contribute, fork the repo and then complete the following steps to get up and
     nodemon server.js
     gulp
     ```
+    or...in one terminal window, run
+    
+    ```
+    npm start
+    ```
 
