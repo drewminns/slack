@@ -14,7 +14,9 @@ class FileSearch extends Component {
 			gdocs: false,
 			zips: false,
 			pdfs: false,
-			fileList: 0
+			fileList: 0,
+			pageSize: 1000,
+			page: 1
 		}
 	}
 
@@ -42,32 +44,40 @@ class FileSearch extends Component {
 		} else {
 			fileString = 'all'
 		}
-		this.props.fetchFiles(token, fileString, userID);
+		this.props.fetchFiles(token, fileString, userID, this.state.pageSize, this.state.page);
 	}
 
 	handleWhoChange(e) { 
 		this.setState({searchType: e.target.value})
 	}
 
+	handleSelectAll(e) {
+		let type = e.target.value;
+		this.setState({
+			images: false,
+			snippets: false,
+			gdocs: false,
+			zips: false,
+			pdfs: false,
+			all: true
+		})
+	}
 
-	handleClick(e) {
-		let type = e.target.value
-		if (type !== 'all') {
-			this.setState({
-				all: false,
-				[type]: this.state[type] ? false : true
-			})
-		} else  {
-			this.setState({
-				images: false,
-				snippets: false,
-				gdocs: false,
-				zips: false,
-				pdfs: false,
-				all: true
-			})
-		}
-  }
+	handleSelectFileType(e) {
+		let type = e.target.value;
+		this.setState({
+			all: false,
+			[type]: this.state[type] ? false : true
+		});
+	}
+
+	handlePageSize(e) {
+		this.setState({ pageSize: e.target.value});
+	}
+
+	handlePage(e) {
+		this.setState({ page: e.target.value});
+	}
 
 	render() {
 		let whoFiles = null,
@@ -76,7 +86,7 @@ class FileSearch extends Component {
 			if (profileData.user.is_admin) {
 				whoFiles = (
 					<div className="field">
-						<label>Who's files should we be looking for?</label>
+						<p>Whose files should we be looking for?</p>
 						<select className="dropdown" value={this.state.searchType} onChange={this.handleWhoChange.bind(this)}>
 							<option value='all'>All public team files</option>
 							<option value={profileData.user.id}>Just your files</option>
@@ -93,7 +103,6 @@ class FileSearch extends Component {
 		}
 		return (
 			<aside className="fileControl">
-				<h2>What kind of files?</h2>
 				<form>
 					{whoFiles}
 					<div className="fileTypeList">
@@ -106,7 +115,7 @@ class FileSearch extends Component {
 								type="checkbox"
 								value="all"
 								checked={this.state.all}
-								onChange={this.handleClick.bind(this)} />
+								onChange={this.handleSelectAll.bind(this)} />
 						</div>
 						<div className="check-row">
 							<label htmlFor="images">Images</label>
@@ -116,17 +125,17 @@ class FileSearch extends Component {
 								type="checkbox"
 								value="images"
 								checked={this.state.images}
-								onChange={this.handleClick.bind(this)} />
+								onChange={this.handleSelectFileType.bind(this)} />
 						</div>
 						<div className="check-row">
-							<label htmlFor="pdf">PDF's</label>
+							<label htmlFor="pdf">PDFs</label>
 							<input
 								id="pdf"
 								name="pdf"
 								type="checkbox"
 								value="pdfs"
 								checked={this.state.pdfs}
-								onChange={this.handleClick.bind(this)} />
+								onChange={this.handleSelectFileType.bind(this)} />
 						</div>
 						<div className="check-row">
 							<label htmlFor="gdocs">Google Docs</label>
@@ -136,7 +145,7 @@ class FileSearch extends Component {
 								type="checkbox"
 								value="gdocs"
 								checked={this.state.gdocs}
-								onChange={this.handleClick.bind(this)} />
+								onChange={this.handleSelectFileType.bind(this)} />
 						</div>
 						<div className="check-row">
 							<label htmlFor="snippets">Snippets</label>
@@ -146,7 +155,7 @@ class FileSearch extends Component {
 								type="checkbox"
 								value="snippets"
 								checked={this.state.snippets}
-								onChange={this.handleClick.bind(this)} />
+								onChange={this.handleSelectFileType.bind(this)} />
 						</div>
 						<div className="check-row">
 							<label htmlFor="zips">Zip Files</label>
@@ -156,7 +165,30 @@ class FileSearch extends Component {
 								type="checkbox"
 								value="zips"
 								checked={this.state.zips}
-								onChange={this.handleClick.bind(this)} />
+								onChange={this.handleSelectFileType.bind(this)} />
+						</div>
+					</div>
+					<div className="paging">
+						<p>Paging</p>
+						<div className="check-row">
+							<label htmlFor="pageSize">Page Size</label>
+							<input
+								name="pageSize"
+								id="pageSize"
+								type="number"
+								min="1" max="1000"
+								value={this.state.pageSize}
+								onChange={this.handlePageSize.bind(this)} />
+						</div>
+						<div className="check-row">
+							<label htmlFor="page">Page Number</label>
+							<input
+								name="page"
+								id="page"
+								type="number"
+								min="1"
+								value={this.state.page}
+								onChange={this.handlePage.bind(this)} />
 						</div>
 					</div>
 				</form>
@@ -170,7 +202,6 @@ class FileSearch extends Component {
 			</aside>
 		)
 	}
-
 }
 
 function mapStateToProps(state) {

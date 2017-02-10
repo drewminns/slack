@@ -18,7 +18,6 @@ class FileDisplay extends Component {
 		this.props.fileGroup.fileList.map(val => {
 			this.props.destroyFile(this.props.authData.token, val.id)
 		});
-		// this.props.destroyFile(this.props.authData.token, this.props.details.id);
 	}
 
 	displayFiles() {
@@ -48,6 +47,11 @@ class FileDisplay extends Component {
 	render() {
 		let dataDisplay;
 		if (typeof this.props.fileGroup.fileList !== 'undefined' && this.props.fileGroup.fileList.length > 0) {
+			this.props.fileGroup.fileList.sort(function(a,b){
+				if (a.size > b.size){ return -1 };
+				if (a.size < b.size){ return 1 };
+				return 0;
+			});
 			dataDisplay = this.displayFiles();
 		} else if (typeof this.props.fileGroup.fileList !== 'undefined' && this.props.fileGroup.fileList.length === 0) {
 			dataDisplay = (
@@ -55,8 +59,8 @@ class FileDisplay extends Component {
 					<div className="noFiles-display">
 						<img src='images/fileintro.svg' />
 						<h2>High Five!</h2>
-						<h3>Looks like there's no files!</h3>
-						<p>Slack has nothing for you! Try a new search with a different file type to see if there's anything else!</p>
+						<h3>Looks like there are no files!</h3>
+						<p>Slack has nothing for you! Try a new search with different parameters to see if there's anything else!</p>
 					</div>
 				</div>
 			)
