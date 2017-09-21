@@ -22,7 +22,12 @@ p.fileSize {
 .fileTypeList {
 	margin-bottom: 20px;
 }
-
+.fileToTs {
+	margin-bottom: 20px;
+	input {
+		color:rgba(0,0,0,1);
+	}
+}
 header.displayInfo {
 	margin-bottom: 20px;
 	padding: 0 20px 20px;

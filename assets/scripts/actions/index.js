@@ -18,10 +18,11 @@ export function fetchProfile(token, user) {
 	}
 }
 
-export function fetchFiles(token, types, userID) {
+export function fetchFiles(token, types, userID, ts_to) {
 	let data = {
 		token: token,
-		types: types
+		types: types,
+		ts_to: ts_to
 	}
 	if (userID !== 'all')
 		data.user = userID
