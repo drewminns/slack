@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-
+import moment from 'moment';
 class FileSearch extends Component {
 
 	constructor(props) {
@@ -20,7 +20,7 @@ class FileSearch extends Component {
 
 	getFiles() {
 		let token = this.props.authData.token;
-		let fileString, userID;
+		let fileString, userID, fileDateTo;
 		if (this.props.profile.user.is_admin === false) {
 			userID = this.props.authData.profile.id
 		} else {
@@ -42,11 +42,16 @@ class FileSearch extends Component {
 		} else {
 			fileString = 'all'
 		}
-		this.props.fetchFiles(token, fileString, userID);
+		fileDateTo = moment().subtract('days', this.state.ts_to).unix();
+		this.props.fetchFiles(token, fileString, userID, fileDateTo);
 	}
 
 	handleWhoChange(e) { 
 		this.setState({searchType: e.target.value})
+	}
+
+	handleDaysChange(e) {
+		this.setState({ts_to: e.target.value})
 	}
 
 
@@ -157,6 +162,17 @@ class FileSearch extends Component {
 								value="zips"
 								checked={this.state.zips}
 								onChange={this.handleClick.bind(this)} />
+						</div>
+					</div>
+					<div className = "fileToTs">
+						<div className = "input-row">
+							<p>Delete files older than</p>
+							<input
+								name="ts_to"
+								id="ts_to"
+								type="text"
+								value={this.state.ts_to}
+								onChange={this.handleDaysChange.bind(this)} /> days
 						</div>
 					</div>
 				</form>
