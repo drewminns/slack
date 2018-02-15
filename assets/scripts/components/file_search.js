@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
+const S_PER_MONTH = 30 * 24 * 3600;
+const MS_PER_SECOND = 1000;
+
 class FileSearch extends Component {
 
 	constructor(props) {
@@ -14,7 +17,8 @@ class FileSearch extends Component {
 			gdocs: false,
 			zips: false,
 			pdfs: false,
-			fileList: 0
+			fileList: 0,
+			minAge: 0,
 		}
 	}
 
@@ -42,13 +46,22 @@ class FileSearch extends Component {
 		} else {
 			fileString = 'all'
 		}
-		this.props.fetchFiles(token, fileString, userID);
+
+		let ts_to = undefined;
+		if(this.state.minAge) {
+			ts_to = ((new Date().valueOf()) / MS_PER_SECOND) - this.state.minAge;
+		}
+
+		this.props.fetchFiles(token, fileString, ts_to, userID);
 	}
 
-	handleWhoChange(e) { 
+	handleWhoChange(e) {
 		this.setState({searchType: e.target.value})
 	}
 
+	handleAgeChange(e) {
+		this.setState({minAge: Number(e.target.value)});
+	}
 
 	handleClick(e) {
 		let type = e.target.value
@@ -158,6 +171,17 @@ class FileSearch extends Component {
 								checked={this.state.zips}
 								onChange={this.handleClick.bind(this)} />
 						</div>
+					</div>
+					<div className="field">
+						<label>How old should they be?</label>
+						<select className="dropdown" value={this.state.ts_to} onChange={this.handleAgeChange.bind(this)}>
+							<option value={ 0 }>Current files</option>
+							<option value={ 1 * S_PER_MONTH }>At least one month old</option>
+							<option value={ 2 * S_PER_MONTH }>At least two months old</option>
+							<option value={ 6 * S_PER_MONTH }>At least six month old</option>
+							<option value={ 12 * S_PER_MONTH }>At least one year old</option>
+							<option value={ 24 * S_PER_MONTH }>At least two years old</option>
+						</select>
 					</div>
 				</form>
 				<button className="search" onClick={this.getFiles.bind(this)}>Get Files</button>

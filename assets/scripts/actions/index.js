@@ -18,13 +18,15 @@ export function fetchProfile(token, user) {
 	}
 }
 
-export function fetchFiles(token, types, userID) {
+export function fetchFiles(token, types, ts_to, userID) {
 	let data = {
 		token: token,
 		types: types
 	}
 	if (userID !== 'all')
 		data.user = userID
+	if (ts_to)
+		data.ts_to = ts_to;
 	const request = axios.get(`https://slack.com/api/files.list`, { params: data });
 	return {
 		type: FETCH_FILES,
